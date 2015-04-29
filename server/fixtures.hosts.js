@@ -3,7 +3,7 @@ hostFixtures = [
   {
     hostname: 'drupal7.site',
     type: 'drupal',
-    versiokn: 7,
+    version: 7,
     last_check: null
   },
   {
