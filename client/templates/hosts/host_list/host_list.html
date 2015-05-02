@@ -1,0 +1,15 @@
+<template name="HostList">
+
+  <div class="host-list">
+    {{#each hosts}}
+      <div class="host-row row">
+        {{> Host}}
+      </div>
+      {{else}}
+      <div class="host-row row empty">
+        <p>Log in to see hosts.</p>
+      </div>
+    {{/each}}
+  </div>
+
+</template>
