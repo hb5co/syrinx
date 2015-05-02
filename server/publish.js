@@ -6,4 +6,3 @@ Meteor.publish('hosts', function () {
 Meteor.publish('host', function () {
   return Hosts.find();
 });
-
