@@ -8,3 +8,4 @@ meteor-platform
 insecure
 twbs:bootstrap
 dburles:collection-helpers
+iron:router
