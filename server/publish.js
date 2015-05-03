@@ -3,6 +3,6 @@ Meteor.publish('hosts', function () {
 });
 
 // @todo Pass doc ID as parameter.
-Meteor.publish('host', function () {
-  return Hosts.find();
+Meteor.publish('host', function (id) {
+  return Hosts.find({_id: id});
 });
