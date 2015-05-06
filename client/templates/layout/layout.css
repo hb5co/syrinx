@@ -1,0 +1,12 @@
+/*
+ * Master Layout CSS
+ */
+body {
+  background: #ededed;
+}
+
+.container {
+  background: #ffffff;
+  border-radius: 5px;
+  border: 1px solid #dedede;
+}
