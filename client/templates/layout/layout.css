@@ -1,12 +1,27 @@
 /*
  * Master Layout CSS
  */
+
+/* Padding for fixed navbar. */
 body {
-  background: #ededed;
+  padding-top: 80px;
 }
 
-.container {
-  background: #ffffff;
-  border-radius: 5px;
-  border: 1px solid #dedede;
+.navbar-header {
+  width: 45%;
+}
+
+/* Align site name in navbar. */
+.navbar-header h2 {
+  margin-top: 15px;
+}
+
+/* Edit for logo size. */
+.navbar-brand {
+  height: 60px;
+  padding: 5px 10px 0;
+}
+
+.navbar-right {
+  margin-right: 0;
 }
