@@ -3,7 +3,12 @@
   <div class="container-fluid">
 
     <div class="navbar-right">
-      <button type="button" class="btn btn-primary navbar-btn" id="login">
+      <button type="button" class="btn btn-success navbar-btn btn-sm" id="create-host">
+        <span class="glyphicon glyphicon-hdd" aria-hidden="true"></span>
+          Create Host
+      </button>
+
+      <button type="button" class="btn btn-primary navbar-btn btn-sm" id="login">
         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
           Log in
       </button>
@@ -22,4 +27,5 @@
 <div class="content">
   {{> HostList}}
 </div>
+
 </template>
