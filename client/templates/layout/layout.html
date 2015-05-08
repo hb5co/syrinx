@@ -1,17 +1,31 @@
 <template name="Layout">
-<i>layout template</i>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
 
-<div class="container">
-  <div class="login">
-    <div class="btn-success" style="width:10%">Login</div>
-  </div>
+    <div class="navbar-right">
+      <button type="button" class="btn btn-success navbar-btn btn-sm" id="create-host">
+        <span class="glyphicon glyphicon-hdd" aria-hidden="true"></span>
+          Create Host
+      </button>
 
-  <div class="header">
-    <h2 class="site-name">Syrinx</h2>
+      <button type="button" class="btn btn-primary navbar-btn btn-sm" id="login">
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+          Log in
+      </button>
+    </div>
+
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">
+        <img class="logo" src="http://placehold.it/50&text=logo" alt="Syrinx" />
+      </a>
+      <h2 class="site-name">Syrinx <small>Application Management</small></h2>
+    </div>
+
   </div>
-  <div class="content">
-    {{> HostList}}
-  </div>
+</nav>
+
+<div class="content">
+  {{> HostList}}
 </div>
 
 </template>
