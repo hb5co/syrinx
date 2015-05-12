@@ -1,11 +1,16 @@
-.host-actions {
+.form-item {
+  margin: 5px 0;
+  padding: 5px 0;
+}
+
+.form-actions {
   margin: 20px 0;
 }
 
-.host-actions a,
-.host-actions a:link,
-.host-actions a:visited,
-.host-actions a:active {
+.form-actions a,
+.form-actions a:link,
+.form-actions a:visited,
+.form-actions a:active {
   color: #ffffff;
 }
 
