@@ -4,7 +4,7 @@
   <div class="col-md-4"><b>Host Name:</b> {{hostname}}</div>
   <div class="col-md-4"><b>Type:</b> {{type}} <b>Version:</b> {{version}}</div>
   <div class="col-md-4">
-    <div class="btn btn-success btn-sm">View</div>
+    <div id="view" class="btn btn-success btn-sm">{{#linkTo route="host.detail"}}View{{/linkTo}}</div>
     <div class="btn btn-primary btn-sm">Edit</div>
   </div>
 </div>

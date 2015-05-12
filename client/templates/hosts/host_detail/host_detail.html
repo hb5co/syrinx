@@ -1,0 +1,28 @@
+<template name="HostDetail">
+<div class="container-fluid host-detail">
+  {{#if get 'isEditing'}}
+
+    <form class="form edit-host">
+      form placeholder
+    </form>
+
+  {{else}}
+
+    <h1>{{hostname}}</h1>
+    <p>{{type}} version: {{version}}</p>
+    <p>{{last_check}}</p>
+
+  {{/if}}
+
+  <div class="back-to-list">
+    <button type="button" class="btn btn-default btn-xs">
+      {{#linkTo route="home"}}
+        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+        Back to Host List
+      {{/linkTo}}
+    </button>
+  </div>
+
+</div>
+</template>
+
