@@ -1,9 +1,37 @@
 <template name="HostDetail">
 <div class="container-fluid host-detail">
   {{#if get 'isEditing'}}
+    <h2>Edit Host</h2>
 
     <form class="form edit-host">
-      form placeholder
+      <div class="form-item">
+        <label for="hostname">Hostname:</label>
+        <input type="text" name="hostname" value="{{hostname}}" />
+      </div>
+
+      <div class="form-item">
+        <label for="type">Type:</label>
+        <input type="text" name="type" value="{{type}}" />
+      </div>
+
+      <div class="form-item">
+        <label for="version">Version:</label>
+        <input type="text" name="version" value="{{version}}" />
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn-success btn-sm">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            Save
+        </button>
+
+        <button type="button" class="btn btn-danger btn-sm">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            {{#linkTo route="host.detail"}}
+              Cancel
+            {{/linkTo}}
+        </button>
+      </div>
     </form>
 
   {{else}}
@@ -12,9 +40,9 @@
     <p>{{type}} version: {{version}}</p>
     <p>{{last_check}}</p>
 
-  <div class="host-actions">
+  <div class="form-actions">
     <button type="button" class="btn btn-warning btn-xs">
-      {{#linkTo route="home"}}
+      {{#linkTo route="host.edit"}}
         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
         Edit Host
       {{/linkTo}}
