@@ -12,6 +12,29 @@
     <p>{{type}} version: {{version}}</p>
     <p>{{last_check}}</p>
 
+  <div class="host-actions">
+    <button type="button" class="btn btn-warning btn-xs">
+      {{#linkTo route="home"}}
+        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+        Edit Host
+      {{/linkTo}}
+    </button>
+
+    <button type="button" class="btn btn-success btn-xs">
+      {{#linkTo route="home"}}
+        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+        Update Host Data
+      {{/linkTo}}
+    </button>
+
+    <button type="button" class="btn btn-danger btn-xs">
+      {{#linkTo route="home"}}
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        Delete Host
+      {{/linkTo}}
+    </button>
+  </div>
+
   {{/if}}
 
   <div class="back-to-list">

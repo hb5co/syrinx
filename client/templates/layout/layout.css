@@ -25,3 +25,11 @@ body {
 .navbar-right {
   margin-right: 0;
 }
+
+/* Button Links */
+.row a,
+.row a:link,
+.row a:visited,
+.row a:active {
+  color: #ffffff;
+}
