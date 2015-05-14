@@ -1,6 +1,27 @@
 .row {
-  min-height: 70px;
-  padding: 10px 0;
-  margin: 0 0 15px 0;
+  padding: 20px 0;
+  margin: 0 0 5px 0;
   border-bottom: 1px solid #dedede;
+}
+
+.row:hover {
+  background: #fafafa;
+}
+
+/* Show/hide sort row icon. */
+.row .row-sort-icon {
+  width: 25px;
+  color: #acacac;
+}
+
+.row .glyphicon-sort {
+  display: none;
+}
+
+.row:hover .glyphicon-sort {
+  display: block;
+}
+
+.row .glyphicon-sort:hover {
+  cursor: move;
 }
