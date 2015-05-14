@@ -4,8 +4,10 @@
 
     <div class="navbar-right">
       <button type="button" class="btn btn-success navbar-btn btn-sm" id="create-host">
-        <span class="glyphicon glyphicon-hdd" aria-hidden="true"></span>
+        {{#linkTo route="host.create"}}
+          <span class="glyphicon glyphicon-hdd" aria-hidden="true"></span>
           Create Host
+        {{/linkTo}}
       </button>
 
       <button type="button" class="btn btn-primary navbar-btn btn-sm" id="login">
