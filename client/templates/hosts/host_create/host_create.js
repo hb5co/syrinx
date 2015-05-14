@@ -1,5 +1,5 @@
 Template.HostCreate.events({
-  'form submit' : function (e, tmpl) {
+  'submit form' : function (e, tmpl) {
     e.preventDefault();
 
     // Define form field variables.
@@ -8,10 +8,10 @@ Template.HostCreate.events({
     var version = e.target.version.value;
 
     // Need more validation here.
-    if (hostname.val().length) {
+    if (hostname.length) {
 
       // Create sort field sequence value.
-      var total = hosts.find().count();
+      var total = Hosts.find().count();
       if (total == 0) {
         var seq = total;
       } else {
@@ -19,7 +19,7 @@ Template.HostCreate.events({
       }
 
       // Insert data into document.
-      hosts.insert({
+      Hosts.insert({
         hostname: hostname,
         type: type,
         version: version,
