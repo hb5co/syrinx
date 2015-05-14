@@ -1,0 +1,37 @@
+<template name="HostCreate">
+<div class="container-fluid host-create">
+  
+    <h2>Create Host</h2>
+
+    <form class="form">
+      <div class="form-item">
+        <label for="hostname">Hostname:</label>
+        <input type="text" name="hostname" value="" />
+      </div>
+
+      <div class="form-item">
+        <label for="type">Type:</label>
+        <input type="text" name="type" value="" />
+      </div>
+
+      <div class="form-item">
+        <label for="version">Version:</label>
+        <input type="text" name="version" value="" />
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn-success btn-sm">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            Save
+        </button>
+
+        <button type="button" class="btn btn-danger btn-sm">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            {{#linkTo route="home"}}
+              Cancel
+            {{/linkTo}}
+        </button>
+      </div>
+    </form>
+</div>
+</template>
