@@ -9,3 +9,4 @@ insecure
 twbs:bootstrap
 dburles:collection-helpers
 iron:router
+mizzao:jquery-ui
