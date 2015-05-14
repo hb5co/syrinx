@@ -27,10 +27,11 @@ Template.HostList.rendered = function() {
                   Blaze.getData(before).sort) / 2;
       }
 
-      Host.update(
-        {_id: Blaze.getData(target)._id},
-        {$set: {sort: newSort}}
-      );
+      Hosts.update({_id: Blaze.getData(target)._id}, {
+        $set: {
+          sort: newSort
+        }
+      });
     }
   });
 

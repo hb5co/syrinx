@@ -2,9 +2,7 @@
 
   <div id="sortable" class="container-fluid host-list">
     {{#each hosts}}
-      <div class="host-row">
         {{> Host}}
-      </div>
       {{else}}
       <div class="host-row empty">
         <p>There are no hosts saved in the system.</p>
