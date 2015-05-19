@@ -12,7 +12,7 @@ Template.HostList.rendered = function() {
 
   this.$('#sortable').sortable({
 
-    stop: function(e, ui) {
+    stop: function(event, ui) {
 
       target = ui.item.get(0);
       before = ui.item.prev().get(0);
