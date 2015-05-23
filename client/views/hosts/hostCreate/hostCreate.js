@@ -1,11 +1,11 @@
 Template.HostCreate.events({
-  'submit form' : function (e, tmpl) {
-    e.preventDefault();
+  'submit form' : function (event, template) {
+    event.preventDefault();
 
     // Define form field variables.
-    var hostname = e.target.hostname.value;
-    var type = e.target.type.value;
-    var version = e.target.version.value;
+    var hostname = event.target.hostname.value;
+    var type = event.target.type.value;
+    var version = event.target.version.value;
 
     // Need more validation here.
     if (hostname.length) {
@@ -27,7 +27,7 @@ Template.HostCreate.events({
         sort: seq
       });
       // Reset form.
-      tmpl.find('form').reset();
+      template.find('form').reset();
     }
   }
 });
