@@ -12,3 +12,4 @@ iron:router
 mizzao:jquery-ui
 sanjo:jasmine
 velocity:html-reporter
+xolvio:cucumber
