@@ -5,13 +5,13 @@ hostFixtures = [
     type: 'drupal',
     version: 7,
     sort: 1,
-    last_check: null
+    lastCheck: null
   },
   {
     hostname: 'drupal6.site',
     type: 'drupal',
     version: 6,
     sort: 2,
-    last_check: null
+    lastCheck: null
   }
 ];
