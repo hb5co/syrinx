@@ -5,20 +5,17 @@
     <div class="navbar-right">
 
       <p class="navbar-text host-count">Hosts <span class="badge">{{totalHosts}}</span></p>
-      <button type="button" class="btn navbar-btn btn-sm" id="create-host">
-        {{#linkTo route="notifications"}}
+      {{#linkTo route="notifications"}}
+        <button type="button" class="btn navbar-btn btn-sm" id="create-host">
           Notifications
-        {{/linkTo}}
-      </button>
-
-      <p class="navbar-text host-count pull-left">Hosts <span class="badge">{{totalHosts}}</span></p>
-
-      <button type="button" class="btn btn-success navbar-btn btn-sm" id="create-host">
-        {{#linkTo route="host.create"}}
-          <span class="glyphicon glyphicon-hdd" aria-hidden="true"></span>
-          Create Host
-        {{/linkTo}}
-      </button>
+        </button>
+      {{/linkTo}}
+      {{#linkTo route="host.create"}}
+        <button type="button" class="btn btn-success navbar-btn btn-sm" id="create-host">
+            <span class="glyphicon glyphicon-hdd" aria-hidden="true"></span>
+            Create Host
+        </button>
+      {{/linkTo}}
 
       <button type="button" class="btn btn-primary navbar-btn btn-sm" id="login">
         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
