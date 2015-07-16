@@ -6,3 +6,7 @@ Meteor.publish('hosts', function () {
 Meteor.publish('host', function (id) {
   return Hosts.find({_id: id});
 });
+
+Meteor.publish('notifications', function () {
+  return Notifications.find();
+});
