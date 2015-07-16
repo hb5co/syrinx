@@ -6,9 +6,13 @@
 
 meteor-platform
 insecure
-twbs:bootstrap
 dburles:collection-helpers
 iron:router
 mizzao:jquery-ui
+<<<<<<< HEAD
 juliancwirko:s-alert
 juliancwirko:s-alert-slide
+=======
+less
+twbs:bootstrap
+>>>>>>> 26: Styled navbar elements for mobile
