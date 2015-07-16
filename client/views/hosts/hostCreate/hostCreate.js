@@ -28,6 +28,7 @@ Template.HostCreate.events({
       });
       // Reset form.
       template.find('form').reset();
+        Router.go('/');
     }
   }
 });
