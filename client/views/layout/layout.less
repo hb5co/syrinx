@@ -1,0 +1,46 @@
+// Custom variables.
+// Can't figure out how to import from twbs:bootstrap.
+@screen-sm: 768px;
+@screen-md: 992px;
+@screen-lg: 1200px;
+
+body {
+  padding-top: 120px;
+  @media (min-width: @screen-sm) {
+    padding-top: 80px;
+  }
+}
+
+.navbar-header {
+  @media (min-width: @screen-sm) {
+    width: 45%;
+  }
+}
+
+.host-count {
+  margin-right: 10px;
+}
+
+/* Align site name in navbar. */
+.navbar-header h2 {
+  margin-top: 15px;
+}
+
+/* Edit for logo size. */
+.navbar-brand {
+  height: 60px;
+  padding: 5px 10px 0;
+}
+
+.navbar-right {
+  margin-right: 0;
+  text-align: right;
+}
+
+/* Button Links */
+.row a,
+.row a:link,
+.row a:visited,
+.row a:active {
+  color: #ffffff;
+}
