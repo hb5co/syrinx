@@ -10,3 +10,5 @@ twbs:bootstrap
 dburles:collection-helpers
 iron:router
 mizzao:jquery-ui
+juliancwirko:s-alert
+juliancwirko:s-alert-slide
