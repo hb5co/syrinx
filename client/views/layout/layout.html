@@ -24,7 +24,10 @@
   </div>
 </nav>
 
-<div class="content">
+<div id="static-sidebar">
+  {{> sidebar}}
+</div>
+<div id="main">
   {{> yield}}
 </div>
 
