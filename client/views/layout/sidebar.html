@@ -1,0 +1,15 @@
+<template name="sidebar">
+  <div class="sidebar-content">
+    <div class="logo hidden-xs text-center">
+      <img src="http://placehold.it/80x80" class="img-circle" alt="Logo">
+    </div>
+    {{#each links}}
+      <a class="sidebar-link" href="{{pathFor location}}">
+        {{name}}
+        {{#if iconClass}}
+          <span class="sidebar-link-icon {{iconClass}}" style="color: {{iconColor}}" aria-hidden="true"></span>
+        {{/if}}
+      </a>
+    {{/each}}
+  </div>
+</template>

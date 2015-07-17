@@ -1,5 +1,5 @@
 <template name="Layout">
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
 
     <div class="navbar-right">
@@ -24,7 +24,10 @@
   </div>
 </nav>
 
-<div class="content">
+<div id="static-sidebar">
+  {{> sidebar}}
+</div>
+<div id="main">
   {{> yield}}
 </div>
 
