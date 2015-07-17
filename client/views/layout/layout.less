@@ -1,46 +1,270 @@
+/*
+ * CSS Coding guide
+ * http://codeguide.co
+ */
+
 // Custom variables.
-// Can't figure out how to import from twbs:bootstrap.
 @screen-sm: 768px;
 @screen-md: 992px;
 @screen-lg: 1200px;
+@bg-color: #2D3243;
 
+/*
+ * Mixins.
+ */
+.text-shadow (@string: 0 1px 3px rgba(0, 0, 0, 0.25)) {
+  text-shadow: @string;
+}
+.box-shadow (@string) {
+  -webkit-box-shadow: @string;
+  -moz-box-shadow:    @string;
+  box-shadow:         @string;
+}
+.drop-shadow (@x: 0, @y: 1px, @blur: 2px, @spread: 0, @alpha: 0.25) {
+  -webkit-box-shadow: @x @y @blur @spread rgba(0, 0, 0, @alpha);
+  -moz-box-shadow:  @x @y @blur @spread rgba(0, 0, 0, @alpha);
+  box-shadow:   @x @y @blur @spread rgba(0, 0, 0, @alpha);
+}
+.inner-shadow (@x: 0, @y: 1px, @blur: 2px, @spread: 0, @alpha: 0.25) {
+  -webkit-box-shadow: inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+  -moz-box-shadow:    inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+  box-shadow:         inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+}
+.box-sizing (@type: border-box) {
+  -webkit-box-sizing: @type;
+  -moz-box-sizing:    @type;
+  box-sizing:         @type;
+}
+.border-radius (@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius:    @radius;
+  border-radius:         @radius;
+
+  -moz-background-clip:    padding;
+  -webkit-background-clip: padding-box;
+  background-clip:         padding-box;
+}
+.border-radiuses (@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
+  -webkit-border-top-right-radius:    @topright;
+  -webkit-border-bottom-right-radius: @bottomright;
+  -webkit-border-bottom-left-radius:  @bottomleft;
+  -webkit-border-top-left-radius:     @topleft;
+
+  -moz-border-radius-topright:        @topright;
+  -moz-border-radius-bottomright:     @bottomright;
+  -moz-border-radius-bottomleft:      @bottomleft;
+  -moz-border-radius-topleft:         @topleft;
+
+  border-top-right-radius:            @topright;
+  border-bottom-right-radius:         @bottomright;
+  border-bottom-left-radius:          @bottomleft;
+  border-top-left-radius:             @topleft;
+
+  -moz-background-clip:    padding;
+  -webkit-background-clip: padding-box;
+  background-clip:         padding-box;
+}
+.opacity (@opacity: 0.5) {
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=(@opacity * 100));
+  -webkit-opacity:  @opacity;
+  -moz-opacity:     @opacity;
+  opacity:    @opacity;
+}
+.gradient (@startColor: #eee, @endColor: white) {
+  background-color: @startColor;
+  background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+  background: -webkit-linear-gradient(top, @startColor, @endColor);
+  background: -moz-linear-gradient(top, @startColor, @endColor);
+  background: -ms-linear-gradient(top, @startColor, @endColor);
+  background: -o-linear-gradient(top, @startColor, @endColor);
+}
+.horizontal-gradient (@startColor: #eee, @endColor: white) {
+  background-color: @startColor;
+  background-image: -webkit-gradient(linear, left top, right top, from(@startColor), to(@endColor));
+  background-image: -webkit-linear-gradient(left, @startColor, @endColor);
+  background-image: -moz-linear-gradient(left, @startColor, @endColor);
+  background-image: -ms-linear-gradient(left, @startColor, @endColor);
+  background-image: -o-linear-gradient(left, @startColor, @endColor);
+}
+.animation (@name, @duration: 300ms, @delay: 0, @ease: ease) {
+  -webkit-animation: @name @duration @delay @ease;
+  -moz-animation:    @name @duration @delay @ease;
+  -ms-animation:     @name @duration @delay @ease;
+}
+.transition (@transition:all 0.15s ease-in-out) {
+  -webkit-transition: @transition;
+  -moz-transition:    @transition;
+  -ms-transition:     @transition;
+  -o-transition:      @transition;
+}
+.transform (@string){
+  -webkit-transform: @string;
+  -moz-transform:    @string;
+  -ms-transform:     @string;
+  -o-transform:      @string;
+}
+.scale (@factor) {
+  -webkit-transform: scale(@factor);
+  -moz-transform:    scale(@factor);
+  -ms-transform:     scale(@factor);
+  -o-transform:      scale(@factor);
+}
+.rotate (@deg) {
+  -webkit-transform: rotate(@deg);
+  -moz-transform:    rotate(@deg);
+  -ms-transform:     rotate(@deg);
+  -o-transform:      rotate(@deg);
+}
+.skew (@deg, @deg2) {
+  -webkit-transform:       skew(@deg, @deg2);
+  -moz-transform:    skew(@deg, @deg2);
+  -ms-transform:     skew(@deg, @deg2);
+  -o-transform:      skew(@deg, @deg2);
+}
+.translate (@x, @y:0) {
+  -webkit-transform:       translate(@x, @y);
+  -moz-transform:    translate(@x, @y);
+  -ms-transform:     translate(@x, @y);
+  -o-transform:      translate(@x, @y);
+}
+.translate3d (@x, @y: 0, @z: 0) {
+  -webkit-transform:       translate3d(@x, @y, @z);
+  -moz-transform:    translate3d(@x, @y, @z);
+  -ms-transform:     translate3d(@x, @y, @z);
+  -o-transform:      translate3d(@x, @y, @z);
+}
+.perspective (@value: 1000) {
+  -webkit-perspective:  @value;
+  -moz-perspective:   @value;
+  -ms-perspective:  @value;
+  perspective:    @value;
+}
+.transform-origin (@x:center, @y:center) {
+  -webkit-transform-origin: @x @y;
+  -moz-transform-origin:    @x @y;
+  -ms-transform-origin:     @x @y;
+  -o-transform-origin:      @x @y;
+}
+.wrap () {
+  text-wrap: wrap;
+  white-space: -moz-pre-wrap;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+
+body, html {
+  height: 100%;
+}
 body {
+  /* Box-model */
   padding-top: 120px;
-  @media (min-width: @screen-sm) {
-    padding-top: 80px;
+  @media (min-width: @screen-sm) { padding-top: 60px; }
+
+  /* Visual */
+  background: @bg-color;
+}
+
+/*
+ * Navbar.
+ */
+.navbar-default {
+  border: none;
+
+  &.navbar-inverse { background-color: @bg-color; }
+  .navbar-header {
+    @media (min-width: @screen-sm) { width: 45%; }
+
+    h2.site-name {
+      /* Box-model */
+      margin-top: 15px;
+
+      /* Typography */
+      color: #fff;
+
+      small { color: lighten(@bg-color, 60%); }
+    }
+    .navbar-brand {
+      /* Box-model */
+      height: 60px;
+      padding: 5px 10px 0;
+    }
+  }
+  .navbar-right {
+    /* Box-model */
+    margin-right: 0;
+
+    /* Typography */
+    text-align: right;
+
+    .host-count { margin-right: 10px; }
   }
 }
 
-.navbar-header {
-  @media (min-width: @screen-sm) {
-    width: 45%;
+/*
+ * Sidebar
+ */
+#static-sidebar {
+  /* Box-model */
+  float: left;
+  padding: 20px;
+  width: inherit;
+  min-width: 220px;
+  max-width: 220px;
+  height: 100%;
+
+  /* Typography */
+  color: lighten(@bg-color, 60%);
+
+  /* Misc */
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  .logo { padding: 40px 0; }
+  .sidebar-link {
+    /* Box-model */
+    padding: 20px;
+    margin-left: -20px;
+    margin-right: -20px;
+    display: block;
+
+    /* Typography */
+    color: lighten(@bg-color, 70%);
+    text-decoration: none;
+
+    /* Visual */
+    background-color: lighten(@bg-color, 20%);
+    border-bottom: 1px solid darken(@bg-color, 40%);
+
+    /* Misc */
+    .box-shadow(inset 0 0 0 0 darken(@bg-color, 5%));
+    .transition();
+
+    .sidebar-link-icon {
+      float: right;
+      .transition();
+    }
+
+    &:hover {
+      .box-shadow(inset -56px 0 0 0 darken(@bg-color, 5%));
+      .sidebar-link-icon { color: lighten(@bg-color, 5%); }
+    }
   }
 }
 
-.host-count {
-  margin-right: 10px;
-}
+/*
+ * Main body
+ */
+#main {
+  /* Box-model */
+  padding: 20px;
+  @media (min-width: @screen-sm) { padding: 40px }
+  height: 100%;
 
-/* Align site name in navbar. */
-.navbar-header h2 {
-  margin-top: 15px;
-}
+  /* Visual */
+  background: #fff;
+  .border-radius(5px 0 0 0);
 
-/* Edit for logo size. */
-.navbar-brand {
-  height: 60px;
-  padding: 5px 10px 0;
-}
-
-.navbar-right {
-  margin-right: 0;
-  text-align: right;
-}
-
-/* Button Links */
-.row a,
-.row a:link,
-.row a:visited,
-.row a:active {
-  color: #ffffff;
+  /* Misc */
+  overflow: auto;
 }
