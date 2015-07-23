@@ -4,10 +4,10 @@ Template.HostDetail.events({
     e.preventDefault();
 
     // Define form field variables.
-    var id = this._id;
-    var hostname = e.target.hostname.value;
-    var type = e.target.type.value;
-    var version = e.target.version.value;
+    var id = this._id,
+      hostname = e.target.hostname.value,
+      type = e.target.type.value,
+      version = e.target.version.value;
 
     // Need more validation here.
     if (hostname.length) {
@@ -18,7 +18,7 @@ Template.HostDetail.events({
           hostname: hostname,
           type: type,
           version: version,
-          host_updated: new Date
+          hostUpdated: new Date
         }
       });
       // After update, go to detail view page.

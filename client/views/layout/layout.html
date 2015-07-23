@@ -1,15 +1,12 @@
 <template name="Layout">
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
 
     <div class="navbar-right">
+
       <p class="navbar-text host-count">Hosts <span class="badge">{{totalHosts}}</span></p>
-      <button type="button" class="btn btn-success navbar-btn btn-sm" id="create-host">
-        {{#linkTo route="host.create"}}
-          <span class="glyphicon glyphicon-hdd" aria-hidden="true"></span>
-          Create Host
-        {{/linkTo}}
-      </button>
+      <a href="{{pathFor 'notifications'}}" class="btn btn-sm btn-success navbar-btn">Notifications</a>
+      <a href="{{pathFor 'host.create'}}" class="btn btn-sm btn-success navbar-btn">Create Host</a>
 
       <button type="button" class="btn btn-primary navbar-btn btn-sm" id="login">
         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -19,7 +16,7 @@
 
     <div class="navbar-header">
       <a class="navbar-brand" href="/">
-        <img class="logo" src="http://placehold.it/50&text=logo" alt="Syrinx" />
+        <img class="logo" src="http://placehold.it/50x50&text=logo" alt="Syrinx" />
       </a>
       <h2 class="site-name">Syrinx <small>Application Management</small></h2>
     </div>
@@ -27,7 +24,10 @@
   </div>
 </nav>
 
-<div class="content">
+<div id="static-sidebar">
+  {{> sidebar}}
+</div>
+<div id="main">
   {{> yield}}
 </div>
 
