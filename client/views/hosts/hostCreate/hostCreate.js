@@ -3,9 +3,9 @@ Template.HostCreate.events({
     event.preventDefault();
 
     // Define form field variables.
-    var hostname = event.target.hostname.value;
-    var type = event.target.type.value;
-    var version = event.target.version.value;
+    var hostname = event.target.hostname.value,
+      type = event.target.type.value,
+      version = event.target.version.value;
 
     // Need more validation here.
     if (hostname.length) {
@@ -23,11 +23,12 @@ Template.HostCreate.events({
         hostname: hostname,
         type: type,
         version: version,
-        host_created: new Date,
+        hostCreated: new Date,
         sort: seq
       });
       // Reset form.
       template.find('form').reset();
+      Router.go('home');
     }
   }
 });

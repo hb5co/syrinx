@@ -7,12 +7,7 @@
   <div class="col-md-3"><b>Host Name:</b> {{hostname}}</div>
   <div class="col-md-5"><b>Type:</b> {{type}} <b>Version:</b> {{version}}</div>
   <div class="col-md-3">
-    <button type="button" class="btn btn-success btn-sm">
-      {{#linkTo route="host.detail"}}
-        <span class="glyphicon glyphicon-star"></span>
-          View Host
-      {{/linkTo}}
-    </button>
+    <a href="{{pathFor 'host.detail'}}" class="btn btn-success btn-sm">View Host</a>
   </div>
 </div>
 
