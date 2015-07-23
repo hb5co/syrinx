@@ -9,6 +9,9 @@ insecure
 dburles:collection-helpers
 iron:router
 mizzao:jquery-ui
+sanjo:jasmine
+velocity:html-reporter
+xolvio:cucumber
 juliancwirko:s-alert
 juliancwirko:s-alert-slide
 less
