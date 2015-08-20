@@ -1,4 +1,4 @@
-<template name="HostDetail">
+<template name="hostDetail">
 <div class="container-fluid host-detail">
   {{#if get 'isEditing'}}
     <h2>Edit Host</h2>
@@ -10,8 +10,7 @@
       </div>
 
       <div class="form-item">
-        <label for="type">Type:</label>
-        <input type="text" name="type" value="{{type}}" />
+        {{> hostOptions}}
       </div>
 
       <div class="form-item">
