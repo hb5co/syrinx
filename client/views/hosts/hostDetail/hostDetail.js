@@ -1,5 +1,4 @@
-
-Template.HostDetail.events({
+Template.hostDetail.events({
   'submit form' : function (e, tmpl) {
     e.preventDefault();
 
@@ -27,3 +26,4 @@ Template.HostDetail.events({
   }
 });
 
+Meteor.call('runCode');
