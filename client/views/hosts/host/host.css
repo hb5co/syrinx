@@ -25,11 +25,3 @@
 .row .glyphicon-sort:hover {
   cursor: move;
 }
-
-/* Status indicator icons. */
-.row .glyphicon-ok {
-  color: green;
-}
-.row .glyphicon-remove {
-  color: red;
-}
