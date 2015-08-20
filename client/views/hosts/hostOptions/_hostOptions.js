@@ -3,7 +3,6 @@ Template.hostOptions.helpers({
     var type = this.type,
       selected;
     selected = type == value ? 'selected' : ''; 
-    console.log(selected);
     return selected;
   }
 });
