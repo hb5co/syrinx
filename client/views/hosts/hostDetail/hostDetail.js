@@ -1,4 +1,3 @@
-
 Template.HostDetail.events({
   'submit form' : function (e, tmpl) {
     e.preventDefault();
