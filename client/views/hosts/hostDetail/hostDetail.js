@@ -24,6 +24,9 @@ Template.HostDetail.events({
       // After update, go to detail view page.
       Router.go('host.detail', {_id: id});
     }
+  },
+  'click #delete' : function (event) {
+      Hosts.remove(this._id);
   }
 });
 
