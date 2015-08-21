@@ -26,6 +26,13 @@ Template.HostCreate.events({
         hostCreated: new Date,
         sort: seq
       });
+
+      Notifications.insert({
+      	type: 'New host created',
+      	body: hostname,
+      	noticeCreated: new Date
+      });
+
       // Reset form.
       template.find('form').reset();
       Router.go('home');

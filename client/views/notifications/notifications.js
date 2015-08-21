@@ -1,5 +1,6 @@
 Template.notifications.helpers({
   notifications: function () {
-    return Notifications.find();
+  	// Show newest notifications first (at the top)
+    return Notifications.find({}, {sort:{ noticeCreated: -1}});
   }
 });
