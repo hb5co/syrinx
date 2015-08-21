@@ -43,14 +43,3 @@ Template.HostList.rendered = function () {
   });
 };
 
-// Returns a list of host types.
-Template.registerHelper('hostTypes', function () {
-  	var _default = '-- Select one --';
-	var a = this.type || _default;
-	return [_default,"Drupal", "Wordpress"].map(
-		function(s){
-			var selected = (s == a) ? 'selected="1"' : '';
-			var disable = (s == _default) ? ' disabled="1"' : '';
-			return '<option value="' + s + '" ' + selected + disable + '>' + s + '</option>';
-	}).join('\n');
-});
