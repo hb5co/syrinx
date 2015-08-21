@@ -28,9 +28,9 @@ Template.HostCreate.events({
       });
 
       Notifications.insert({
-      	type: 'New host created',
-      	body: hostname,
-      	noticeCreated: new Date
+        type: 'New host created',
+        body: hostname,
+        noticeCreated: new Date
       });
 
       // Reset form.

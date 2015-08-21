@@ -10,11 +10,11 @@ Template.hostDetail.events({
 
     // Need more validation here.
     if (hostname.length) {
-    	
-    	// Hold previous values so we can notify what edits were made 
-    	var updates = [];
-    	var oldValues = Hosts.findOne({_id: id});
-    	
+      
+      // Hold previous values so we can notify what edits were made 
+      var updates = [];
+      var oldValues = Hosts.findOne({_id: id});
+      
       // Update data in document.
       Hosts.update({_id: id}, {
         $set: {
@@ -26,21 +26,21 @@ Template.hostDetail.events({
       });
 
       var newValues = Hosts.findOne({_id: id});
-      	for (var i in newValues){
-      		// Ignore the timestamp
-      		if (newValues[i] != oldValues[i] && i != 'hostUpdated' && i != 'hostCreated'){
-      			updates.push(hostname + ' "' + i + '" from "' + oldValues[i] + '" to "' + newValues[i] + '"');
-      		}
-      	}
+        for (var i in newValues){
+          // Ignore the timestamp
+          if (newValues[i] != oldValues[i] && i != 'hostUpdated' && i != 'hostCreated'){
+            updates.push(hostname + ' "' + i + '" from "' + oldValues[i] + '" to "' + newValues[i] + '"');
+          }
+        }
 
-      	// Log the changes
-      	updates.forEach(function(s){
-      		Notifications.insert({
-      			type: 'Updated',
-      			body: s,
-      			noticeCreated: new Date
-      		});
-      	});
+        // Log the changes
+        updates.forEach(function(s){
+          Notifications.insert({
+            type: 'Updated',
+            body: s,
+            noticeCreated: new Date
+          });
+        });
 
       // After update, go to detail view page.
       Router.go('host.detail', {_id: id});
@@ -48,9 +48,9 @@ Template.hostDetail.events({
   },
   'click #delete' : function (event) {
       Notifications.insert({
-      		type: 'Host Deleted',
-      		body: this.hostname,
-      		noticeCreated: new Date
+          type: 'Host Deleted',
+          body: this.hostname,
+          noticeCreated: new Date
       });
       Hosts.remove(this._id);
   }
