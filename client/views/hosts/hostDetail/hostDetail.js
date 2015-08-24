@@ -48,9 +48,9 @@ Template.hostDetail.events({
   },
   'click #delete' : function (event) {
       Notifications.insert({
-          type: 'Host Deleted',
-          body: this.hostname,
-          noticeCreated: new Date
+        type: 'Host Deleted',
+        body: this.hostname,
+        noticeCreated: new Date
       });
       Hosts.remove(this._id);
   }
