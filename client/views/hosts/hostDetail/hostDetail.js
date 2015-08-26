@@ -13,7 +13,7 @@ Template.hostDetail.events({
       
       // Hold previous values so we can notify what edits were made 
       var updates = [];
-      var oldValues = Hosts.findOne({_id: id});
+      var oldValues = Hosts.findOne({_id: id}, {fields: {hostname: 1, type: 1, version: 1}});
       
       // Update data in document.
       Hosts.update({_id: id}, {
@@ -48,10 +48,10 @@ Template.hostDetail.events({
         }
       });
 
-      var newValues = Hosts.findOne({_id: id});
+      var newValues = Hosts.findOne({_id: id}, {fields: {hostname: 1, type: 1, version: 1}});
         for (var i in newValues){
           // Ignore the timestamp
-          if (newValues[i] != oldValues[i] && i != 'hostUpdated' && i != 'hostCreated'){
+          if (newValues[i] != oldValues[i]){
             updates.push(hostname + ' "' + i + '" from "' + oldValues[i] + '" to "' + newValues[i] + '"');
           }
         }
