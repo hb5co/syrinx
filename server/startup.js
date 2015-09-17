@@ -13,11 +13,11 @@ Meteor.startup(function () {
 
   if (Meteor.isServer) {
     Meteor.methods({
-      updateHostStatus: function(hostname) {
-        var url = "http://" + hostname;
-        var result = Meteor.http.get(url, {timeout: 30000});
-        if (result.statusCode == 200) {
-          return "ok";
+      updateHostStatus: function (hostname) {
+        var url = 'http://' + hostname,
+          result = Meteor.http.get(url, {timeout: 30000});
+        if (result.statusCode === 200) {
+          return 'ok';
         }
       }
     });

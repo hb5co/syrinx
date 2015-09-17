@@ -7,23 +7,23 @@ Template.HostCreate.events({
       type = event.target.type.value,
       version = event.target.version.value,
       environment = event.target.environment.value;
-    
+
     // Need more validation here.
     if (hostname.length) {
 
       // Create sort field sequence value.
-      var total = Hosts.find().count();
-      if (total == 0) {
-        var seq = total;
+      var total = Hosts.find().count(),
+        seq = 0;
+      if (total === 0) {
+        seq = total;
       } else {
-        var seq = total++;
+        seq = total++;
       }
 
       // Hold generated warnings
-      var warnings = [];
-
-      // Try to find a host matching the input 'hostname'
-      var match = Hosts.findOne({hostname: {$regex: '^' + hostname + '$', $options: 'i'}}, {fields:{hostname:1, environment:1}});
+      var warnings = [],
+        // Try to find a host matching the input 'hostname'
+        match = Hosts.findOne({hostname: {$regex: '^' + hostname + '$', $options: 'i'}}, {fields: {hostname: 1, environment: 1}});
 
       // If found & it has the same environment, it's a duplicate
       if (match && environment == match.environment) {
@@ -36,23 +36,25 @@ Template.HostCreate.events({
       }
 
       // Check that a version was entered
-      if (!version){
+      if (!version) {
         warnings.push('Must specify a <b>version</b>');
       }
 
       // If there are warnings, display a notification & don't save.
       if (warnings.length) {
-        sAlert.error('<b>Warning:</b><br>' + warnings.map(function(s){return '• ' + s;}).join('<br>'), 
-          { effect: 'bouncyflip', 
-            position: 'bottom', 
-            timeout: 5000, 
-            onRouteClose: false, 
-            html: true, 
-            stack: false, 
+        sAlert.error('<b>Warning:</b><br>' + warnings.map(function (s) { return '• ' + s; }).join('<br>'),
+          {
+            effect: 'bouncyflip',
+            position: 'bottom',
+            timeout: 5000,
+            onRouteClose: false,
+            html: true,
+            stack: false,
             offset: '0px'
-          });
+          }
+        );
 
-        return  
+        return true;
       }
 
       // Insert data into document.
@@ -61,19 +63,19 @@ Template.HostCreate.events({
         type: type,
         version: version,
         environment: environment,
-        status: "refresh",
+        status: 'refresh',
         hostCreated: new Date,
         sort: seq
       }, function (insertError, id) {
         // Update the status of the host once a response has been determined
         // asynchronously.
-        Meteor.call("updateHostStatus", hostname, function(hostError, response) {
+        Meteor.call('updateHostStatus', hostname, function (hostError, response) {
           // If there was an error or if there was no response, then consider this
           // site to be offline.
-          if (hostError || response != "ok") {
+          if (hostError || response !== 'ok') {
             Hosts.update({_id: id}, {
               $set: {
-                status: "remove"
+                status: 'remove'
               }
             });
           }
@@ -81,7 +83,7 @@ Template.HostCreate.events({
           else {
             Hosts.update({_id: id}, {
               $set: {
-                status: "ok"
+                status: 'ok'
               }
             });
           }
@@ -91,7 +93,7 @@ Template.HostCreate.events({
       Notifications.insert({
         type: 'New host created',
         body: hostname,
-        noticeCreated: new Date
+        noticeCreated: new Date()
       });
 
       // Reset form.
