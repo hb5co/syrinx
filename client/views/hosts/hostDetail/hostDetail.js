@@ -1,5 +1,4 @@
-
-Template.HostDetail.events({
+Template.hostDetail.events({
   'submit form' : function (e, tmpl) {
     e.preventDefault();
 
@@ -18,12 +17,39 @@ Template.HostDetail.events({
           hostname: hostname,
           type: type,
           version: version,
+          status: "refresh",
           hostUpdated: new Date
         }
       });
+
+      // Update the status of the host once a response has been determined
+      // asynchronously.
+      Meteor.call("updateHostStatus", hostname, function(hostError, response) {
+        // If there was an error or if there was no response, then consider this
+        // site to be offline.
+        if (hostError || response != "ok") {
+          Hosts.update({_id: id}, {
+            $set: {
+              status: "remove"
+            }
+          });
+        }
+        // If a response was successful, then consider this site to be online.
+        else {
+          Hosts.update({_id: id}, {
+            $set: {
+              status: "ok"
+            }
+          });
+        }
+      });
+
       // After update, go to detail view page.
       Router.go('host.detail', {_id: id});
     }
+  },
+  'click #delete' : function (event) {
+      Hosts.remove(this._id);
   }
 });
 

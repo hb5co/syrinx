@@ -1,4 +1,4 @@
-<template name="HostDetail">
+<template name="hostDetail">
 <div class="container-fluid host-detail">
   {{#if get 'isEditing'}}
     <h2>Edit Host</h2>
@@ -10,8 +10,7 @@
       </div>
 
       <div class="form-item">
-        <label for="type">Type:</label>
-        <input type="text" name="type" value="{{type}}" />
+        {{> hostOptions}}
       </div>
 
       <div class="form-item">
@@ -36,7 +35,7 @@
 
   {{else}}
 
-    <h1>{{hostname}}</h1>
+    <h1>{{hostname}} <span class="glyphicon glyphicon-{{status}}"></span></h1>
     <p>{{type}} version: {{version}}</p>
     <p>{{lastCheck}}</p>
 
@@ -55,7 +54,7 @@
       {{/linkTo}}
     </button>
 
-    <button type="button" class="btn btn-danger btn-xs">
+    <button type="button" class="btn btn-danger btn-xs" id="delete">
       {{#linkTo route="home"}}
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
         Delete Host

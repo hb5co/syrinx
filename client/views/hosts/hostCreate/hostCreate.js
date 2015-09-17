@@ -23,9 +23,33 @@ Template.HostCreate.events({
         hostname: hostname,
         type: type,
         version: version,
+        status: "refresh",
         hostCreated: new Date,
         sort: seq
+      }, function (insertError, id) {
+        // Update the status of the host once a response has been determined
+        // asynchronously.
+        Meteor.call("updateHostStatus", hostname, function(hostError, response) {
+          // If there was an error or if there was no response, then consider this
+          // site to be offline.
+          if (hostError || response != "ok") {
+            Hosts.update({_id: id}, {
+              $set: {
+                status: "remove"
+              }
+            });
+          }
+          // If a response was successful, then consider this site to be online.
+          else {
+            Hosts.update({_id: id}, {
+              $set: {
+                status: "ok"
+              }
+            });
+          }
+        });
       });
+
       // Reset form.
       template.find('form').reset();
       Router.go('home');
