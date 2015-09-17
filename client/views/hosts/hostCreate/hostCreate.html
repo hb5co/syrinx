@@ -1,36 +1,46 @@
 <template name="HostCreate">
-<div class="container-fluid host-create">
-
     <h2>Create Host</h2>
 
-    <form class="form">
-      <div class="form-item">
+    <form class="ui form">
+      <h4 class="ui dividing header">Host Information</h4>
+      <div class="field">
         <label for="hostname">Hostname:</label>
         <input type="text" name="hostname" value="" />
       </div>
 
-      <div class="form-item">
+      <div class="field">
         {{> hostOptions}}
       </div>
 
-      <div class="form-item">
+      <div class="field">
         <label for="version">Version:</label>
         <input type="text" name="version" value="" />
       </div>
 
+      <h4 class="ui dividing header">Environment Information</h4>
+      <div class="field">
+        <label for="environment">Environment:</label>
+        <select>
+          <option value="development">Development</option>
+          <option value="testing">Testing</option>
+          <option value="demo">Demo</option>
+          <option value="staging">Staging</option>
+          <option value="production">Production</option>
+        </select>
+      </div>
+
       <div class="form-actions">
-        <button type="submit" class="btn btn-success btn-sm">
-            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+        <button type="submit" class="ui primary button">
+            <i class="plus icon"></i>
             Save
         </button>
 
-        <button type="button" class="btn btn-danger btn-sm">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        <button type="button" class="ui button">
+            <i class="remove icon"></i>
             {{#linkTo route="home"}}
               Cancel
             {{/linkTo}}
         </button>
       </div>
     </form>
-</div>
 </template>
