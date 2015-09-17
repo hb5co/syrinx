@@ -42,3 +42,4 @@ Template.HostList.rendered = function () {
     }
   });
 };
+
