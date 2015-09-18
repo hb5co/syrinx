@@ -24,34 +24,35 @@ Template.HostCreate.events({
 
       // Try to find a host matching the input 'hostname'
       var match = Hosts.findOne({hostname: {$regex: '^' + hostname + '$', $options: 'i'}}, {fields:{hostname:1, environment:1}});
-    	
+
       // If found & it has the same environment, it's a duplicate
-    	if (match && environment == match.environment) {
-    		warnings.push(match.hostname + ' (' + match.environment + ') already exists');
+      if (match && environment == match.environment) {
+        warnings.push(match.hostname + ' (' + match.environment + ') already exists');
       }
 
       // Make sure the '- Select Type-' isn't passed
       if (type.search(/^-\s?/) > -1) {
-      	warnings.push('Must select a host <b>type</b>');
+        warnings.push('Must select a host <b>type</b>');
       }
 
       // Check that a version was entered
       if (!version){
-      	warnings.push('Must specify a <b>version</b>');
+        warnings.push('Must specify a <b>version</b>');
       }
 
       // If there are warnings, display a notification & don't save.
       if (warnings.length) {
-      	sAlert.error('<b>Warning:</b><br>' + warnings.map(function(s){return '• ' + s;}).join('<br>'), 
-      		{ effect: 'bouncyflip', 
-      			position: 'bottom', 
-      			timeout: 5000, 
-      			onRouteClose: false, 
-      			html: true, 
-      			stack: false, 
-      			offset: '0px'
-      		});
-				return  
+        sAlert.error('<b>Warning:</b><br>' + warnings.map(function(s){return '• ' + s;}).join('<br>'), 
+          { effect: 'bouncyflip', 
+            position: 'bottom', 
+            timeout: 5000, 
+            onRouteClose: false, 
+            html: true, 
+            stack: false, 
+            offset: '0px'
+          });
+
+        return  
       }
 
       // Insert data into document.
