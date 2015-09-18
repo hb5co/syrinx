@@ -3,10 +3,11 @@ Template.HostCreate.events({
     event.preventDefault();
 
     // Define form field variables.
-    var hostname = event.target.hostname.value,
+    var hostname = event.target.hostname.value.trim(),
       type = event.target.type.value,
-      version = event.target.version.value;
-
+      version = event.target.version.value,
+      environment = event.target.environment.value;
+    
     // Need more validation here.
     if (hostname.length) {
 
@@ -18,11 +19,48 @@ Template.HostCreate.events({
         var seq = total++;
       }
 
+      // Hold generated warnings
+      var warnings = [];
+
+      // Try to find a host matching the input 'hostname'
+      var match = Hosts.findOne({hostname: {$regex: '^' + hostname + '$', $options: 'i'}}, {fields:{hostname:1, environment:1}});
+
+      // If found & it has the same environment, it's a duplicate
+      if (match && environment == match.environment) {
+        warnings.push(match.hostname + ' (' + match.environment + ') already exists');
+      }
+
+      // Make sure the '- Select Type-' isn't passed
+      if (type.search(/^-\s?/) > -1) {
+        warnings.push('Must select a host <b>type</b>');
+      }
+
+      // Check that a version was entered
+      if (!version){
+        warnings.push('Must specify a <b>version</b>');
+      }
+
+      // If there are warnings, display a notification & don't save.
+      if (warnings.length) {
+        sAlert.error('<b>Warning:</b><br>' + warnings.map(function(s){return '• ' + s;}).join('<br>'), 
+          { effect: 'bouncyflip', 
+            position: 'bottom', 
+            timeout: 5000, 
+            onRouteClose: false, 
+            html: true, 
+            stack: false, 
+            offset: '0px'
+          });
+
+        return  
+      }
+
       // Insert data into document.
       Hosts.insert({
         hostname: hostname,
         type: type,
         version: version,
+        environment: environment,
         status: "refresh",
         hostCreated: new Date,
         sort: seq
