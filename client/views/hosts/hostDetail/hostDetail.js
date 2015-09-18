@@ -10,31 +10,31 @@ Template.hostDetail.events({
 
     // Need more validation here.
     if (hostname.length) {
-      
-      // Hold previous values so we can notify what edits were made 
-      var updates = [];
-      var oldValues = Hosts.findOne({_id: id}, {fields: {hostname: 1, type: 1, version: 1}});
-      
+
+      // Hold previous values so we can notify what edits were made.
+      var updates = [],
+        oldValues = Hosts.findOne({_id: id}, {fields: {hostname: 1, type: 1, version: 1}});
+
       // Update data in document.
       Hosts.update({_id: id}, {
         $set: {
           hostname: hostname,
           type: type,
           version: version,
-          status: "refresh",
-          hostUpdated: new Date
+          status: 'refresh',
+          hostUpdated: new Date()
         }
       });
 
       // Update the status of the host once a response has been determined
       // asynchronously.
-      Meteor.call("updateHostStatus", hostname, function(hostError, response) {
+      Meteor.call('updateHostStatus', hostname, function (hostError, response) {
         // If there was an error or if there was no response, then consider this
         // site to be offline.
-        if (hostError || response != "ok") {
+        if (hostError || response !== 'ok') {
           Hosts.update({_id: id}, {
             $set: {
-              status: "remove"
+              status: 'remove'
             }
           });
         }
@@ -42,26 +42,26 @@ Template.hostDetail.events({
         else {
           Hosts.update({_id: id}, {
             $set: {
-              status: "ok"
+              status: 'ok'
             }
           });
         }
       });
 
       var newValues = Hosts.findOne({_id: id}, {fields: {hostname: 1, type: 1, version: 1}});
-        for (var i in newValues){
+        for (var i in newValues) {
           // Ignore the timestamp
-          if (newValues[i] != oldValues[i]){
+          if (newValues[i] !== oldValues[i]) {
             updates.push(hostname + ' "' + i + '" from "' + oldValues[i] + '" to "' + newValues[i] + '"');
           }
         }
 
         // Log the changes
-        updates.forEach(function(s){
+        updates.forEach(function (s) {
           Notifications.insert({
             type: 'Updated',
             body: s,
-            noticeCreated: new Date
+            noticeCreated: new Date()
           });
         });
 
@@ -73,7 +73,7 @@ Template.hostDetail.events({
       Notifications.insert({
         type: 'Host Deleted',
         body: this.hostname,
-        noticeCreated: new Date
+        noticeCreated: new Date()
       });
       Hosts.remove(this._id);
   }
