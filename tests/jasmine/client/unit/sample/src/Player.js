@@ -1,4 +1,4 @@
-/* globals Player: true */
+/* globals Player : true */
 
 Player = function Player() {};
 
